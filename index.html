@@ -2,37 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SVG Circle Animation</title>
+<title>SVG Animation</title>
+
 <style>
   svg {
     width: 500px;
-    height: 120px;
+    height: 150px;
     border: 1px solid #ccc;
   }
 
-  .moving-circle {
-    animation: moveX 3s linear infinite alternate;
+  .animated-circle {
+    animation:
+      moveX 4s linear infinite alternate,
+      pulse 2s ease-in-out infinite,
+      colorChange 3s linear infinite,
+      rotateCircle 4s linear infinite;
+    transform-origin: 50px 75px;
   }
 
   @keyframes moveX {
     from {
-      transform: translateX(0px);
+      transform: translateX(0);
     }
     to {
-      transform: translateX(400px);
+      transform: translateX(350px);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      r: 20;
+    }
+    50% {
+      r: 30;
+    }
+  }
+
+  @keyframes colorChange {
+    0% {
+      fill: red;
+    }
+    50% {
+      fill: orange;
+    }
+    100% {
+      fill: blue;
+    }
+  }
+
+  @keyframes rotateCircle {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 </style>
 </head>
+
 <body>
 
-<svg viewBox="0 0 500 120">
+<svg width="500" height="150">
   <circle
-    class="moving-circle"
+    class="animated-circle"
     cx="50"
-    cy="60"
+    cy="75"
     r="20"
-    fill="dodgerblue" />
+    fill="red" />
 </svg>
 
 </body>
